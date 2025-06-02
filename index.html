@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Visual Encryptor - AES-128</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-800 to-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white text-black rounded-xl shadow-lg p-8 w-full max-w-xl space-y-6">
+    <h1 class="text-3xl font-bold text-center text-blue-600"> LockItUp  <span class="text-black text-xl"> "AES-128 Visual Encryptor" </span> </h1>
+    
+    <div>
+      <label class="font-semibold">Input Text</label>
+      <textarea id="inputText" rows="3" class="w-full mt-1 p-2 border rounded bg-gray-50"></textarea>
+    </div>
+
+    <div class="mt-2">
+      <label class="font-semibold"> Upload File .txt</label>
+      <input type="file" id="fileInput" accept=".txt" class="block mt-1" onchange="handleFileUpload()" />
+    </div>
+
+    <div>
+      <label class="font-semibold">Key (16 chars)</label>
+      <input type="text" id="key" maxlength="16" class="w-full mt-1 p-2 border rounded bg-gray-50" placeholder="Masukkan kunci...">
+    </div>
+
+    <div class="flex justify-center space-x-4">
+      <button onclick="encrypt()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Encrypt</button>
+      <button onclick="decrypt()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Decrypt</button>
+    </div>
+
+   <div>
+        <label class="font-semibold">Output</label>
+        <textarea id="outputText" rows="3" class="w-full mt-1 p-2 border rounded bg-yellow-50 text-black font-mono" readonly></textarea>
+        <button onclick="copyOutput()" class="text-sm text-blue-600 mt-1 hover:underline">Salin</button>
+
+        <div class="flex items-center my-3 text-gray-700">
+            <hr class="flex-grow border-t border-gray-400" />
+            <span class="mx-2 text-sm font-semibold">atau</span>
+            <hr class="flex-grow border-t border-gray-400" />
+        </div>
+
+        <button onclick="downloadOutput()" class="text-sm text-blue-600 mt-1 hover:underline">Download Output .txt</button>
+    </div>
+
+    <p id="notif" class="text-sm text-center font-medium text-red-500"></p>
+  </div>
+</body>
+</html>
